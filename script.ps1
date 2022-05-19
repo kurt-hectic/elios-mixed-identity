@@ -4,6 +4,10 @@ $Temp_dir = "c:\temp\elios-impersonation"
 $today = Get-Date -Format "yyyy-MM-dd"
 $daysback = 1
 
+if ((get-date).DayOfWeek -eq 'Monday') {
+	$daysback = 3
+}
+
 $Command = "java -jar alfresco-audit-export.jar $($today) $($daysback) $($Temp_dir)"
 
 
