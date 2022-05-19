@@ -83,7 +83,7 @@ def process_web_log(file):
     
     
 def get_web_logs(dirs):
-    """loops through directories containing compresses web log files and aggregates to a dataframe"""
+    """loops through directories containing compressed web log files and aggregates to a dataframe"""
 
     rows = [] # list of all log entries
     # open the zip and iterate over the entries
@@ -196,6 +196,7 @@ def get_elios_audit_log(dirs):
     return df_read
  
 def merge_frames(df_access_logs,df_suspect_logins):
+    """combine the audit log and web log by joining on user and time interval. Returns dataframe of problem cases."""
 
     # correlate web and audit log
     # prepare dataframe of ELIOS audit log
@@ -233,6 +234,9 @@ def merge_frames(df_access_logs,df_suspect_logins):
     return df_problem_logins
 
 def write_out_and_plot(df_problem_logins):
+    """writes out the list of problem cases and produces charts"""
+
+    print("writing stats and charts to",directory_out)
 
     today = date.today()
 

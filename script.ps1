@@ -24,3 +24,7 @@ $compress = @{
 Compress-Archive @compress -Force
 
 Remove-Item -LiteralPath $Temp_dir -Force -Recurse
+
+
+$Command = "python process.py"
+Invoke-Expression -Command $Command
